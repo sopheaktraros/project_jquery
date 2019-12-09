@@ -1,7 +1,12 @@
 $('#hide').hide();//hide input calulate
+$('#verical').hide();//hide verical line
 $(document).ready(function(){ 
     var url = "https://raw.githubusercontent.com/radytrainer/test-api/master/test.json";
     $('#choose').on('change', function(){
+        $('#hide').show();//show input calulate
+        $('#verical').show();// show veircal line
+        $('#Instructions').html('Instructions');//Instructions
+        $('#Ingredients').html('Ingredients');//Ingredients
         $.ajax({
             dataType: 'json',
             url: url,
@@ -24,10 +29,7 @@ $(document).ready(function(){
                     </div>
                     `;
 
-                    $('#hide').show();//show input calulate
-
                     element.ingredients.forEach(item =>{
-                    $('#Ingredients').html('Ingredients');
                     output +=`
                       <tr>
                         <td><img src="${item.iconUrl}" width="30"></td>
@@ -39,7 +41,7 @@ $(document).ready(function(){
                     });//foreach 2 loop for ingredients
                     $('#output').html(output);
 
-                    $('#Instructions').html('Instructions');
+                    //Instructions 
                     
 
                     };//condition if esle
@@ -49,7 +51,6 @@ $(document).ready(function(){
             } //success
         });//ajax
     });//function change
-
 });//function ready
 
 /////////////////////////////////////////////////////////

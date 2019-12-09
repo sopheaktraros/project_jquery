@@ -7,6 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>jQuery Project</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        .vl {
+            border-left: 2px solid rgb(83, 80, 80);
+            height: 45%;
+            position: absolute;
+            left: 50%;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,7 +57,7 @@
                                 <button class="btn btn-secondary" type="submit" id="donw"> - </button>
                             </div>
                             <input type="text" id="getInput" class="form-control text-center" disabled
-                                placeholder="Search" value="1">
+                            value="1">
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" type="submit" id="up"> + </button>
                             </div>
@@ -59,20 +67,20 @@
                 </div>
 
                 <div class="row mt-5">
-                    <div class="col-6">
+                    <div class="col-5">
                         <h4 class="text-center" id="Ingredients"></h4>
                         <table class="table table-borderless" id="output">
 
                         </table>
                     </div>
-                    <div class="col-6">
+
+                    <div class="col-2 vl text-center" id="verical"></div>
+
+                    <div class="col-5">
                         <h4 class="text-center" id="Instructions"></h4>
-                        <p id="step1" style="color: rgb(28, 193, 243);"></p>
-                        <p id="st1"></p>
-                        <p id="step2" style="color: rgb(28, 193, 243);"></p>
-                        <p id="st2"></p>
-                        <p id="step3" style="color: rgb(28, 193, 243);"></p>
-                        <p id="st3"></p>
+                            <table class="table table-borderless" id="instruct">
+
+                            </table>
                     </div>
                 </div>
 
