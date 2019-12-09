@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>jQuery Project</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
+
 <body>
     <div class="container mt-5">
         <div class="row">
@@ -28,15 +30,52 @@
     <hr>
 
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
                         <table class="table table-borderless" id="result">
-                            
+
                         </table>
                     </div>
                 </div>
+
+                <div class="row mt-5" id="hide">
+                    <div class="col-3"></div>
+                    <div class="col-3" style="font-size: 28px;">Number of persons</div>
+                    <div class="col-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit" id="donw"> - </button>
+                            </div>
+                            <input type="text" id="getInput" class="form-control text-center" disabled
+                                placeholder="Search" value="1">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit" id="up"> + </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <h4 class="text-center" id="Ingredients"></h4>
+                        <table class="table table-borderless" id="output">
+
+                        </table>
+                    </div>
+                    <div class="col-6">
+                        <h4 class="text-center" id="Instructions"></h4>
+                        <p id="step1" style="color: rgb(28, 193, 243);"></p>
+                        <p id="st1"></p>
+                        <p id="step2" style="color: rgb(28, 193, 243);"></p>
+                        <p id="st2"></p>
+                        <p id="step3" style="color: rgb(28, 193, 243);"></p>
+                        <p id="st3"></p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -44,4 +83,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/project.js"></script>
 </body>
+
 </html>
