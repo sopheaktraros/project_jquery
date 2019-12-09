@@ -1,20 +1,21 @@
 $('#hide').hide();//hide input calulate
 $('#verical').hide();//hide verical line
-$(document).ready(function(){ 
+$(document).ready(function(){
+    requerstApi();//requerst name of element from api
     var url = "https://raw.githubusercontent.com/radytrainer/test-api/master/test.json";
     $('#choose').on('change', function(){
         $('#hide').show();//show input calulate
         $('#verical').show();// show veircal line
         $('#Instructions').html('Instructions');//Instructions
-        $('#Ingredients').html('Ingredients');//Ingredients
+        $('#Ingredients').html('Ingredients');//Ingredients 
         $.ajax({
             dataType: 'json',
             url: url,
             success: function(data){
-                var getData = $('#choose').val();
                 var result = "";
                 var output = "";
                 data.recipes.forEach(element => {
+                    var getData = $('#choose').val();
                     if(getData == element.id){
                     result +=`
                     <div class="row">
@@ -38,7 +39,7 @@ $(document).ready(function(){
                         <td>${item.name}</td>
                       </tr>
                       `;
-                    });//foreach 2 loop for ingredients
+                    });//foreach 2 (loop for ingredients)
                     $('#output').html(output);
 
                     //Instructions 
@@ -50,8 +51,33 @@ $(document).ready(function(){
 
             } //success
         });//ajax
-    });//function change
+    });//function on change
 });//function ready
+
+//get url
+function getUrl(){
+    var url = "https://raw.githubusercontent.com/radytrainer/test-api/master/test.json";
+    return url;
+}
+//requerst api
+function requerstApi(){
+    $.ajax({
+        dataType: 'json',
+        url: getUrl(),
+        success: (data) => chooseRecipe(data.recipes),
+        error: () => console.log('error'),
+    })
+}
+//loop
+function chooseRecipe(recipe){
+    var option = "";
+    recipe.forEach(element => {
+        option +=`
+            <option value="${element.id}">${element.name}</option>
+        `;
+    });
+    $('#choose').append(option);
+}
 
 /////////////////////////////////////////////////////////
 //calutate number
@@ -64,7 +90,6 @@ $('#donw').on('click', function(){
     var getInput = $('#getInput').val();
     userDonw(getInput); 
 });
-
 function userUp(up){
     var getVarlueUp = parseInt(up) + 1;
     if(getVarlueUp <= 15){
@@ -73,7 +98,6 @@ function userUp(up){
        
     }
 }
-
 function userDonw(donw){
     var getVarlueDonw = parseInt(donw) - 1;
     if(getVarlueDonw >= 0){
@@ -82,16 +106,10 @@ function userDonw(donw){
         
     }
 }
-
-function getValueFromDB(){
-
-}
-
 function multiple(calculate){
     var muls = calculate * 2;
     output(muls);
 }
-
 function output(out){
     $('#result').html(out);
 }
