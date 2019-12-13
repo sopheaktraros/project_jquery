@@ -1,5 +1,5 @@
-<!DOCTYPE html> 
-<html lang="en"> 
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
         .vl {
             border-left: 2px solid rgb(83, 80, 80);
             height: 45%;
-            position: absolute; 
+            position: absolute;
             left: 50%;
         }
     </style>
@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <select id="select" class="form-control">
                             <option disabled selected>Choose Recipe</option>
-                        </select> 
+                        </select>
                     </div>
                 </form>
             </div>
@@ -48,20 +48,22 @@
 
                 <div class="row mt-5" id="inputCalulate">
                     <div class="col-3"></div>
-                    <div class="col-3" style="font-size: 28px;">Number of persons</div>
-                    <div class="col-3">
+                    <div class="col-3" style="font-size: 28px; margin-top: -5px;">Number of persons</div>
+                    <div class="col-4">
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" type="submit" id="donw"> - </button>
                             </div>
-                            <input type="text" id="getInput" class="form-control text-center" disabled
-                            value="1">
+                            <div class="input-group-append" id="nbGuests">
+
+                            </div>
+
                             <div class="input-group-append">
                                 <button class="btn btn-secondary" type="submit" id="up"> + </button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-3"></div>
+                    <div class="col-2"></div>
                 </div>
 
                 <div class="row mt-5">
@@ -76,9 +78,9 @@
 
                     <div class="col-5" style="margin-left: 100px;">
                         <h4 class="text-center" id="instructions"></h4>
-                            <table class="table table-borderless" id="instruct">
+                        <div class="instruction" id="instruct">
 
-                            </table>
+                        </div>
                     </div>
                 </div>
 

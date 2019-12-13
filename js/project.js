@@ -29,7 +29,6 @@ $('#select').on('change', function(){
         var getInputDonw = $('#getInput').val();//get value from input
         userDonw(getInputDonw); 
     });
-
 });
 
 //request api
@@ -58,16 +57,17 @@ function chooseRecipe(recipe){
 function getRecipes(id) {
     allData.forEach( item =>{
         if(item.id == id){
-            eachRecipes(item.name, item.iconUrl);
+            eachRecipes(item.name, item.iconUrl, item.nbGuests);
             eachIngredients(item.ingredients);
             eachStep(item.instructions);
         }
     })
 }
 
-//loop and display name and image of recipes on the screen
-function eachRecipes(name, img){
+//loop display name and image of recipes on the screen and display guests into type input 
+function eachRecipes(name, img , guests){
     var result = "";
+    var getGuests = "";
     result +=`
     <div class="row">
         <div class="col-2"></div>
@@ -80,6 +80,10 @@ function eachRecipes(name, img){
         <div class="col-3"></div>
     </div>
     `;
+    getGuests +=`
+        <input type="text" value="${guests}" class="form-control text-center" disabled >
+    `;
+    $('#nbGuests').html(getGuests);
     $('#result').html(result);
 }
 
@@ -97,23 +101,26 @@ function eachIngredients(ingredients){
         <td>${name}</td>
     </tr>
     `;
+
     })
     $('#output').html(result);
 }
 
-//loop instructions step in api
+//loop instructions and cut step in api
 function eachStep(instructions){
     $('#instructions').html("Instructions");
     var result = "";
-    result +=`
-        <tr>
-            <td>${instructions}</td>
-        </tr>
+    var splitStep = instructions.split("<step>");
+    for(var i = 1; i < splitStep.length; i++){
+        result +=`
+        <h6 class="text-primary">Step: ${i}</h6>
+        <p>${splitStep[i]}</p>
     `;
+    }
     $('#instruct').html(result);
 }
 
-
+//calulate the number
 function userUp(up){
     var getVarlueUp = parseInt(up) + 1;
     if(getVarlueUp <= 15){
