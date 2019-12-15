@@ -81,7 +81,7 @@ function eachRecipes(name, img , guests){
     </div>
     `;
     getGuests +=`
-        <input type="text" value="${guests}" class="form-control text-center" disabled >
+        <input type="text" value="${guests}" class="form-control text-center" disabled id="getInput">
     `;
     $('#nbGuests').html(getGuests);
     $('#result').html(result);
@@ -95,7 +95,7 @@ function eachIngredients(ingredients){
         var {iconUrl, quantity, unit, name} = element;
         result +=`
     <tr>
-        <td><img src="${iconUrl}" width="30"></td>
+        <td><img src="${iconUrl}" width="40"></td>
         <td>${quantity}</td>
         <td>${(unit[0]).toLowerCase()}</td>
         <td>${name}</td>
@@ -126,7 +126,6 @@ function userUp(up){
     if(getVarlueUp <= 15){
         $('#getInput').val(getVarlueUp);
         multiple(getVarlueUp);
-       
     }
 }
 
@@ -134,8 +133,7 @@ function userDonw(donw){
     var getVarlueDonw = parseInt(donw) - 1;
     if(getVarlueDonw >= 0){
         $('#getInput').val(getVarlueDonw);
-        multiple(getVarlueDonw);
-        
+        multiple(getVarlueDonw);  
     }
 }
 
