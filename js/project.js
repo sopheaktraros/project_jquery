@@ -1,14 +1,14 @@
 $('#inputCalulate').hide();//hide input calulate
 $('#verical').hide();//hide verical line
 
-//get url from api
+//get url from api  
 function getUrl(){
     var url = "https://raw.githubusercontent.com/radytrainer/test-api/master/test.json";
     return url;
 } 
 
 //globle veriable store array for other using
-var allData = [];
+var getAllData = [];
 $(document).ready(function () {
    requestApi();//function request name of element from api
 $('#select').on('change', function(){
@@ -43,7 +43,7 @@ function requestApi(){
 
 //loop api to get name and id of element and throw to html in select tage
 function chooseRecipe(recipe){
-    allData = recipe;
+    getAllData = recipe;
     var option = "";
     recipe.forEach(element => {
         option +=`
@@ -55,11 +55,18 @@ function chooseRecipe(recipe){
 
 //loop array and condition (if value select's of element eques id of data get from api it is will call eachRecipes, eachIngredients, eachStep function)
 function getRecipes(id) {
-    allData.forEach( item =>{
+    getAllData.forEach( item =>{
         if(item.id == id){
+            //call function eachRecipes to get name, iconUrl, and nbGuests
             eachRecipes(item.name, item.iconUrl, item.nbGuests);
+            //call function eachIngredients to get ingredients
             eachIngredients(item.ingredients);
+            //call function eachStep to get instructions
             eachStep(item.instructions);
+            //store data for call to loop in fuction getGuests
+            eachQuanlitie = item;
+            //get old guests from api
+            oldGuest = item.nbGuests;
         }
     })
 }
@@ -120,28 +127,41 @@ function eachStep(instructions){
     $('#instruct').html(result);
 }
 
-//calulate the number
+//put condition, get value from input and call function getGuests to calulate when user click sign +
 function userUp(up){
     var getVarlueUp = parseInt(up) + 1;
-    if(getVarlueUp <= 15){
-        $('#getInput').val(getVarlueUp);
-        multiple(getVarlueUp);
+    if(getVarlueUp <= 15){//condition getVarlueUp increase <= 15 if getVarlueUp greater than 15 is stop increase
+        $('#getInput').val(getVarlueUp);//get value from input when user click on sign +
+        getGuests($("#getInput").val()); //function calulate new quantity
     }
 }
 
+//put condition, get value from input and call function getGuests to calulate when user click sign -
 function userDonw(donw){
     var getVarlueDonw = parseInt(donw) - 1;
-    if(getVarlueDonw >= 0){
-        $('#getInput').val(getVarlueDonw);
-        multiple(getVarlueDonw);  
+    if(getVarlueDonw >= 1){//condition getVarlueDonw increase >= 1 if getVarlueDonw less than 1 is stop decrease
+        $('#getInput').val(getVarlueDonw);//get value from input when user click on sign -
+        getGuests($("#getInput").val()); //function calulate new quantity
     }
 }
 
-function multiple(calculate){
-    var muls = calculate * 5;
-    output(muls);
-}
-
-function output(out){
-    $('#result').html(out);
+//calulate new quantity when user click on sign - or +
+function getGuests(newGuest) {
+    var minus;
+    var newQuanlity;
+    var display = "";
+    eachQuanlitie.ingredients.forEach(element => {
+        var {quantity, iconUrl, name, unit} = element;
+        minus = quantity / oldGuest;
+        newQuanlity = minus * newGuest;
+        display += `
+        <tr>
+            <td><img src="${iconUrl}" style="width:40px"></td>
+            <td id='quantity'>${newQuanlity}</td>
+            <td>${(unit[0]).toLowerCase()}</td>
+            <td>${name}</td>
+        </tr>
+    `;
+    });
+     $("#output").html(display);
 }
