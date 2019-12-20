@@ -1,13 +1,18 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>jQuery Project</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <style>
+        .bg {
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
         .vl {
             border-left: 2px solid rgb(83, 80, 80);
             height: 45%;
@@ -17,7 +22,7 @@
     </style>
 </head>
 
-<body>
+<body class="bg" style="background-image: url('img/background.png');">
     <div class="container mt-5">
         <div class="row">
             <div class="col-4"></div>
@@ -33,10 +38,12 @@
             <div class="col-4"></div>
         </div>
     </div>
-    <hr>
+    <hr style="background-color:white;">
 
-    <div class="container mt-5">
-        <div class="card">
+    <div class="container mt-3">
+        <h1 class="text-center text-white" style="font-size: 50px;">WELCOME TO RECIPES OF COOKING</h1>
+        <p id="para" class="text-center text-white" style="font-size: 20px;">HAPPY WEEKEND IN YOUR FAMILY WITH COOKING</p>
+        <div class="card mt-3 bg-white" id="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">

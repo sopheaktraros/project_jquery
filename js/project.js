@@ -1,10 +1,11 @@
 $('#inputCalulate').hide();//hide input calulate
 $('#verical').hide();//hide verical line
+$('#card').hide();
 
 //get url from api  
 function getUrl(){
     var url = "https://raw.githubusercontent.com/radytrainer/test-api/master/test.json";
-    return url;
+    return url; 
 } 
 
 //globle veriable store array for other using
@@ -14,6 +15,8 @@ $(document).ready(function () {
 $('#select').on('change', function(){
     $('#inputCalulate').show();//show input calulate
     $('#verical').show();//show verical line
+    $('#card').show();
+    $('#para').hide();
     var getValueSelect = $('#select').val();//get value from select option
     getRecipes(getValueSelect);
    })
@@ -82,7 +85,7 @@ function eachRecipes(name, img , guests){
             <h1>${name}</h1>
         </div>
         <div class="col-3">
-            <img src="${img}" class="img-fluid" style="width: 200px; height: 150px;"/>
+            <img src="${img}" class="img-fluid img-thumbnail" style="width: 200px; height: 150px;"/>
         </div>
         <div class="col-3"></div>
     </div>
@@ -147,13 +150,13 @@ function userDonw(donw){
 
 //calulate new quantity when user click on sign - or +
 function getGuests(newGuest) {
-    var minus;
+    var division;
     var newQuanlity;
     var display = "";
     eachQuanlitie.ingredients.forEach(element => {
         var {quantity, iconUrl, name, unit} = element;
-        minus = quantity / oldGuest;
-        newQuanlity = minus * newGuest;
+        division = quantity / oldGuest;
+        newQuanlity = division * newGuest;
         display += `
         <tr>
             <td><img src="${iconUrl}" style="width:40px"></td>
