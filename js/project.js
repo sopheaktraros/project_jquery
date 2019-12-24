@@ -19,6 +19,7 @@ $(document).ready(function () {
         $('#verical').show();//show verical line
         $('#card').show();//show card
         $('#para').hide();//hide paragraph
+        $('#copy').hide();
         $('#enjoy').show();
         var getValueSelect = $('#select').val();//get value from select option
         getRecipes(getValueSelect);
